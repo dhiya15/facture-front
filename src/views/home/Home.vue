@@ -6,13 +6,13 @@
 <!--        <CarouselAnimation />-->
 <!--      </b-col>-->
       <b-col cols="12" class="d-flex align-items-stretch">
-        <BaseCard title="Afaq Association - Zawya Lekbira Kerzaz" subtitle="Menu">
+        <BaseCard title="Factures" subtitle="Menu">
           <template v-slot:comcode>
             <div>
               <div class="d-flex flex-row">
                 <div>
                   <img
-                      src="@/assets/images/logo.jpeg"
+                      src="@/assets/images/logo.png"
                       alt="logo"
                       class="rounded-circle mt-4"
                       width="150"
@@ -20,50 +20,50 @@
                   />
                 </div>
                 <div class="pl-2 mt-4 mr-2">
-                  <h1 class="mb-2 float-right">جمعية الآفـــاق</h1>
+                  <h1 class="mb-2 float-right">برنامج تسيير الفواتير</h1>
                   <br>
-                  <h6 class="mb-3 float-right">الزاوية الكبيرة - كرزاز</h6>
+                  <h6 class="mb-3 float-right">مؤسسة بربوشي مكي عبد المجيد</h6>
                 </div>
               </div>
               <hr class="custom-hr" />
               <b-row>
-                <b-col cols="12" md="4" lg="2">
+                <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
                     <img src="@/assets/images/users/people.png" class="img-fluid rounded-circle" width="65"/>
-                    <h5 class="card-title mt-2 mb-1 pb-1">تسيير الاعضاء</h5>
+                    <h5 class="card-title mt-2 mb-1 pb-1">معلومات المؤسسة</h5>
 
                     <b-button block href="/jam3iya/persons" pill variant="danger" class="mt-1 d-flex align-items-center justify-content-center">
                       اضهار
                     </b-button>
                   </b-card>
                 </b-col>
-                <b-col cols="12" md="4" lg="2">
+                <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
                     <img src="@/assets/images/users/money-management.png" class="img-fluid rounded-circle" width="65" />
-                    <h5 class="card-title mt-2 mb-1 pb-1">نفقات الجمعية</h5>
+                    <h5 class="card-title mt-2 mb-1 pb-1">تسيير الزبائن</h5>
 
                     <b-button block href="/jam3iya/expenses" pill variant="primary" class="mt-1 d-flex align-items-center justify-content-center">
                       اضهار
                     </b-button>
                   </b-card>
                 </b-col>
-                <b-col cols="12" md="4" lg="2">
+                <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
                     <img src="@/assets/images/users/collateral.png" class="img-fluid rounded-circle" width="65" />
-                    <h5 class="card-title mt-2 mb-1 pb-1">نفقات دار الجماعة</h5>
+                    <h5 class="card-title mt-2 mb-1 pb-1">إنشاء فاتورة جديدة</h5>
 
                     <b-button block href="/jam3iya/expenses_dar_jma3a" pill variant="warning" class="mt-1 d-flex align-items-center justify-content-center text-white">
                       اضهار
                     </b-button>
                   </b-card>
                 </b-col>
-                <b-col cols="12" md="4" lg="2">
+                <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
                     <img
                         src="@/assets/images/users/payment.png"
                         class="img-fluid rounded-circle"
                         width="65"/>
-                    <h5 class="card-title mt-2 mb-1 pb-1">اشتراكات الاعضاء</h5>
+                    <h5 class="card-title mt-2 mb-1 pb-1">حول البرنامج</h5>
 
                     <b-button
                         block
@@ -72,42 +72,6 @@
                         variant="success"
                         class="mt-1 d-flex align-items-center justify-content-center">
                       اضهار</b-button>
-                  </b-card>
-                </b-col>
-                <b-col cols="12" md="4" lg="2">
-                  <b-card class="mb-1 text-center">
-                    <img
-                        src="@/assets/images/users/statistics.png"
-                        class="img-fluid rounded-circle"
-                        width="65"/>
-                    <h5 class="card-title mt-2 mb-1 pb-1">احصائيات الجمعية</h5>
-
-                    <b-button
-                        block
-                        href="/jam3iya/statistics"
-                        pill
-                        variant="info"
-                        class="mt-1 d-flex align-items-center justify-content-center text-white">
-
-                      اضهار</b-button>
-                  </b-card>
-                </b-col>
-                <b-col cols="12" md="4" lg="2">
-                  <b-card class="mb-1 text-center">
-                    <img
-                        src="@/assets/images/users/reminder.png"
-                        class="img-fluid rounded-circle"
-                        width="65"/>
-                    <h5 class="card-title mt-2 mb-1 pb-1">السنوات المالية والانواع</h5>
-
-                    <b-button
-                        block
-                        href="/jam3iya/years-types"
-                        pill
-                        variant="primary"
-                        class="mt-1 d-flex align-items-center justify-content-center">
-                      اضهار
-                    </b-button>
                   </b-card>
                 </b-col>
               </b-row>

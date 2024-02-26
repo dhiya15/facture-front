@@ -17,7 +17,7 @@
                       نحن نقدم برامج أنيقة مع ميزات غير محدودة
                     </h2>
                     <p class="mt-4 text-white op-5 font-weight-normal">
-                      برنامج بسيط لإدارة الاشتراكات الشهرية والسنوية لأعضاء جمعية أو مؤسسة معينة
+                      برنامج بسيط لإدارة لعمل فواتير
                     </p>
                     <b-button
                       size="lg"
@@ -33,7 +33,7 @@
               <div class="p-4 text-right">
                 <br>
                 <br>
-                <img src="@/assets/images/logo.jpeg" height="80" width="90"/>
+                <img src="@/assets/images/logo.png" height="80" width="90"/>
                 <h2 class="font-weight-bold mt-4">تسجيل الدخول</h2>
                 <h6 class="mb-4">
                   ليس لدك حساب ؟

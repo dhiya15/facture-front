@@ -19,7 +19,7 @@ export default [
     icon: "user",
     title: "Personnes",
     i18n: "Personnes",
-    to: "/persons/",
+    to: "/clients/",
 
   },
 
@@ -28,7 +28,7 @@ export default [
     icon: "user",
     title: "Dépenses Afaq Zawya",
     i18n: "Dépenses Afaq Zawya",
-    to: "/expenses/",
+    to: "/information/",
   },
   {
     id: "41",
