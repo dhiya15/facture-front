@@ -13,7 +13,8 @@
         <span class="logo-text">
             <!-- Light Logo text -->
 <!--            <img src="../../../assets/images/logo-part2.png"  alt="homepage" height="40" width="180">-->
-            <img src="../../../assets/images/logo2.png"  alt="homepage" height="50" width="180">
+<!--            <img src="../../../assets/images/logo2.png"  alt="homepage" height="50" width="180">
+Dhiya Eddine-->
         </span>
 
 

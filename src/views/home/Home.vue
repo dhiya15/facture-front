@@ -32,7 +32,7 @@
                     <img src="@/assets/images/users/people.png" class="img-fluid rounded-circle" width="65"/>
                     <h5 class="card-title mt-2 mb-1 pb-1">معلومات المؤسسة</h5>
 
-                    <b-button block href="/jam3iya/persons" pill variant="danger" class="mt-1 d-flex align-items-center justify-content-center">
+                    <b-button block href="/factures/information" pill variant="danger" class="mt-1 d-flex align-items-center justify-content-center">
                       اضهار
                     </b-button>
                   </b-card>
@@ -42,7 +42,7 @@
                     <img src="@/assets/images/users/money-management.png" class="img-fluid rounded-circle" width="65" />
                     <h5 class="card-title mt-2 mb-1 pb-1">تسيير الزبائن</h5>
 
-                    <b-button block href="/jam3iya/expenses" pill variant="primary" class="mt-1 d-flex align-items-center justify-content-center">
+                    <b-button block href="/factures/clients" pill variant="primary" class="mt-1 d-flex align-items-center justify-content-center">
                       اضهار
                     </b-button>
                   </b-card>

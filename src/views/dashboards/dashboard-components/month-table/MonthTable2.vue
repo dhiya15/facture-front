@@ -134,8 +134,9 @@
         id="modal-center"
         hide-footer
         centered
-        title="اضافة زبون جديد"
+        title="اضافة معلومات جديدة"
         class="text-right"
+        size="xl"
     >
       <div class="d-block">
         <b-overlay :show="isLoading" rounded="sm">
@@ -171,33 +172,21 @@
                 </b-col>
               </b-alert>
               <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                <b-form-group
-                    id="input-group-1"
-                    label="عنوان البريد الالكتروني:"
-                    label-for="input-1"
-                    class="text-right"
-                >
-                  <b-form-input
-                      id="input-1"
-                      v-model="form.email"
-                      type="email"
-                      placeholder="ادخل البريد الالكتروني"
-                  ></b-form-input>
-                </b-form-group>
+
 
                 <b-row>
                   <b-col>
                     <b-form-group
-                        id="input-group-2"
-                        label="الاسم بالعربية:"
-                        label-for="input-2"
+                        id="input-group-1"
+                        label="النمط بالفرنسية:"
+                        label-for="input-1"
                         class="text-right"
                     >
                       <b-form-input
-                          id="input-2"
-                          v-model="form.full_name_ar"
-                          placeholder="ادخل الاسم بالعربية"
-                          required
+                          id="input-1"
+                          v-model="form.key"
+                          type="text"
+                          placeholder="ادخل النمط بالفرنسية"
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
@@ -212,24 +201,6 @@
                           id="input-2"
                           v-model="form.full_name_fr"
                           placeholder="ادخل الاسم بالفرنسية"
-                          required
-                      ></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                </b-row>
-
-                <b-row>
-                  <b-col>
-                    <b-form-group
-                        id="input-group-2"
-                        label="العنوان بالعربية:"
-                        label-for="input-2"
-                        class="text-right"
-                    >
-                      <b-form-input
-                          id="input-2"
-                          v-model="form.address_ar"
-                          placeholder="ادخل العنوان بالعربية"
                           required
                       ></b-form-input>
                     </b-form-group>
@@ -251,23 +222,222 @@
                   </b-col>
                 </b-row>
 
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="النمط بالعربية:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.key_ar"
+                          type="text"
+                          placeholder="ادخل النمط بالعربية"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="الاسم بالعربية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.full_name_ar"
+                          placeholder="ادخل الاسم بالعربية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="العنوان بالعربية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.address_ar"
+                          placeholder="ادخل العنوان بالعربية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="عنوان البريد الالكتروني:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.email"
+                          type="email"
+                          placeholder="ادخل البريد الالكتروني"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم الهاتف:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.phone"
+                          placeholder="ادخل رقم الهاتف"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم الحساب البنكي:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.account_number"
+                          placeholder="ادخل رقم الحساب البنكي"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="رقم السجل التجاري:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.register_number"
+                          type="text"
+                          required
+                          placeholder="ادخل رقم السجل التجاري"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم التعريف الجبائي:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.id_number"
+                          placeholder="ادخل رقم التعريف الجبائي"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="رقم التعريف الاحصائي:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.statistics_number"
+                          type="text"
+                          required
+                          placeholder="ادخل رقم التعريف الاحصائي"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="اسم الوكالة بالعربية:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.agency_ar"
+                          type="text"
+                          required
+                          placeholder="ادخل اسم الوكالة بالعربية"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="اسم الوكالة بالفرنسية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.agency_fr"
+                          placeholder="ادخل اسم الوكالة بالفرنسية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="المجال بالعربية:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.header_ar"
+                          type="text"
+                          required
+                          placeholder="ادخل االمجال بالعربية"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="المجال بالفرنسية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.header_fr"
+                          placeholder="ادخل المجال بالفرنسية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+
+                </b-row>
 
 
-
-
-                <b-form-group
-                    id="input-group-2"
-                    label="رقم الهاتف:"
-                    label-for="input-2"
-                    class="text-right"
-                >
-                  <b-form-input
-                      id="input-2"
-                      v-model="form.phone"
-                      placeholder="ادخل رقم الهاتف"
-                      required
-                  ></b-form-input>
-                </b-form-group>
 
                 <div class="btn-grp">
                   <b-button type="submit" variant="primary">اضافة</b-button>
@@ -285,7 +455,7 @@
         id="modal-center2"
         hide-footer
         centered
-        title="تعديل زبون"
+        title="تعديل معلومات"
         class="text-right"
     >
       <div class="d-block">
@@ -322,19 +492,39 @@
                 </b-col>
               </b-alert>
               <b-form @submit="onSubmit2" v-if="show2">
-                <b-form-group
-                    id="input-group-1"
-                    label="عنوان البريد الالكتروني:"
-                    label-for="input-1"
-                    class="text-right"
-                >
-                  <b-form-input
-                      id="input-1"
-                      v-model="form.email"
-                      type="email"
-                      placeholder="ادخل البريد الالكتروني"
-                  ></b-form-input>
-                </b-form-group>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="النمط:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.key"
+                          type="text"
+                          placeholder="ادخل النمط"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="النمط بالعربية:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.key_ar"
+                          type="text"
+                          placeholder="ادخل النمط بالعربية"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
 
                 <b-row>
                   <b-col>
@@ -402,26 +592,174 @@
                   </b-col>
                 </b-row>
 
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="عنوان البريد الالكتروني:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.email"
+                          type="email"
+                          placeholder="ادخل البريد الالكتروني"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم الهاتف:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.phone"
+                          placeholder="ادخل رقم الهاتف"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
 
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="رقم السجل التجاري:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.register_number"
+                          type="text"
+                          required
+                          placeholder="ادخل رقم السجل التجاري"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم التعريف الجبائي:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.id_number"
+                          placeholder="ادخل رقم التعريف الجبائي"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
 
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="رقم التعريف الاحصائي:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.statistics_number"
+                          type="text"
+                          required
+                          placeholder="ادخل رقم التعريف الاحصائي"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم الحساب البنكي:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.account_number"
+                          placeholder="ادخل رقم الحساب البنكي"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
 
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="اسم الوكالة بالعربية:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.agency_ar"
+                          type="text"
+                          required
+                          placeholder="ادخل اسم الوكالة بالعربية"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="اسم الوكالة بالفرنسية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.agency_fr"
+                          placeholder="ادخل اسم الوكالة بالفرنسية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
 
-                <b-form-group
-                    id="input-group-2"
-                    label="رقم الهاتف:"
-                    label-for="input-2"
-                    class="text-right"
-                >
-                  <b-form-input
-                      id="input-2"
-                      v-model="form.phone"
-                      placeholder="ادخل رقم الهاتف"
-                      required
-                  ></b-form-input>
-                </b-form-group>
-
-
-
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="المجال:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          required
+                          v-model="form.header_ar"
+                          type="text"
+                          placeholder="ادخل االمجال"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="المجال بالفرنسية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.header_fr"
+                          placeholder="ادخل المجال بالفرنسية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
 
 
                 <div class="btn-grp">
@@ -450,12 +788,12 @@ export default {
     filter: null,
     fields: [
       {
-        key: "full_name_ar",
-        label: "الاسم بالعربية",
+        key: "key",
+        label: "النمط",
       },
       {
-        key: "full_name_fr",
-        label: "الاسم بالفرنسية",
+        key: "full_name_ar",
+        label: "الاسم بالعربية",
       },
       {
         key: "email",
@@ -470,10 +808,6 @@ export default {
         label: "العنوان بالعربية",
       },
       {
-        key: "address_fr",
-        label: "العنوان بالفرنسية",
-      },
-      {
         key: "show_details",
         label: "",
       },
@@ -485,12 +819,22 @@ export default {
     perPage: 5,
     pageOptions: [5, 10, 15, { value: 100, text: "استضهر اكثر" }],
     form: {
-      email: "",
+      key: "",
+      key_ar: "",
       full_name_ar: "",
       full_name_fr: "",
+      phone: "",
+      email: "",
       address_ar: "",
       address_fr: "",
-      phone: "",
+      register_number: "",
+      id_number: "",
+      statistics_number: "",
+      account_number: "",
+      agency_ar: "",
+      agency_fr: "",
+      header_ar: "",
+      header_fr: "",
     },
     show: true,
     show2: true,
@@ -504,7 +848,7 @@ export default {
   }),
   mounted() {
     this.totalRows = this.items.length;
-    this.getAllPersons()
+    this.getAllInformation()
   },
   methods: {
     onSubmit(event) {
@@ -512,7 +856,7 @@ export default {
       this.showError = false
       this.showSuccess = false
       this.isLoading = true
-      this.$http.post("members/create", this.form, {
+      this.$http.post("infos/create", this.form, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -521,7 +865,7 @@ export default {
             this.isLoading = false
             if(response.status === 200){
               this.showSuccess = true
-              this.getAllPersons()
+              this.getAllInformation()
               this.onReset()
             }else{
               this.showError = true
@@ -538,9 +882,9 @@ export default {
             this.showError = true
           });
     },
-    getAllPersons() {
+    getAllInformation() {
       this.isLoading = true
-      this.$http.get("members/get-all")
+      this.$http.get("infos/get-all")
           .then(response => {
             this.isLoading = false
             if(response.status === 200){
@@ -561,7 +905,7 @@ export default {
       this.showError = false
       this.showSuccess = false
       this.isLoading = true
-      this.$http.post("members/update", this.form, {
+      this.$http.post("infos/update", this.form, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -571,7 +915,7 @@ export default {
             if(response.status === 200){
               this.showSuccess = true
 
-              this.getAllPersons()
+              this.getAllInformation()
             }else{
               this.showError = true
             }
@@ -589,13 +933,24 @@ export default {
     },
     onReset() {
       //   event.preventDefault();
-      this.form.email = "";
-      this.form.full_name_ar = "";
-      this.form.full_name_fr = "";
-      this.form.address_ar = "";
-      this.form.address_fr = "";
-      this.form.phone = "";
-      this.show = false;
+      this.form = {
+        key: "",
+        key_ar: "",
+        full_name_ar: "",
+        full_name_fr: "",
+        phone: "",
+        email: "",
+        address_ar: "",
+        address_fr: "",
+        register_number: "",
+        id_number: "",
+        statistics_number: "",
+        account_number: "",
+        agency_ar: "",
+        agency_fr: "",
+        header_ar: "",
+        header_fr: "",
+      }
       this.$nextTick(() => {
         this.show = true;
       });
@@ -621,13 +976,13 @@ export default {
 
               this.showError = false
               this.isLoading = true
-              this.$http.post("members/delete", this.form)
+              this.$http.post("infos/delete", this.form)
                   .then(response => {
                     this.isLoading = false
                     if(response.status === 200){
                       this.show2 = false
                       this.showSuccess = true
-                      this.getAllPersons()
+                      this.getAllInformation()
                     }else{
                       this.showError = true
                     }
@@ -659,20 +1014,43 @@ export default {
       this.hideAlerts()
 
       this.form.id = item.id
-      this.form.phone = item.phone
+
+      this.form.key = item.key
+      this.form.key_ar = item.key_ar
       this.form.full_name_ar = item.full_name_ar
       this.form.full_name_fr = item.full_name_fr
       this.form.address_fr = item.address_fr
       this.form.address_ar = item.address_ar
       this.form.email = item.email
+      this.form.phone = item.phone
+      this.form.register_number = item.register_number
+      this.form.id_number = item.id_number
+      this.form.statistics_number = item.statistics_number
+      this.form.account_number = item.account_number
+      this.form.agency_fr = item.agency_fr
+      this.form.agency_ar = item.agency_ar
+      this.form.header_fr = item.header_fr
+      this.form.header_ar = item.header_ar
     },
     resetAdd() {
-      this.form.email = "";
-      this.form.full_name_ar = "";
-      this.form.full_name_fr = "";
-      this.form.address_ar = "";
-      this.form.address_fr = "";
-      this.form.phone = "";
+      this.form = {
+        key: "",
+        key_ar: "",
+        full_name_ar: "",
+        full_name_fr: "",
+        phone: "",
+        email: "",
+        address_ar: "",
+        address_fr: "",
+        register_number: "",
+        id_number: "",
+        statistics_number: "",
+        account_number: "",
+        agency_ar: "",
+        agency_fr: "",
+        header_ar: "",
+        header_fr: "",
+      };
     },
     hideAlerts() {
       this.showError = false

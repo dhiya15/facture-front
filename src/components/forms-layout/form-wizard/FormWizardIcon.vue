@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  style="direction: ltr">
     <form-wizard
       @on-complete="onComplete"
       color="#1e88e5"

@@ -21,4 +21,11 @@ export default [
     i18n: "تسيير الزبائن",
     to: "/clients/",
   },
+  {
+    id: "3",
+    icon: "users",
+    title: "انشاء فاتورة",
+    i18n: "انشاء فاتورة",
+    to: "/factures/",
+  },
 ];
