@@ -23,9 +23,16 @@ export default [
   },
   {
     id: "3",
-    icon: "users",
+    icon: "file-text",
     title: "انشاء فاتورة",
     i18n: "انشاء فاتورة",
     to: "/factures/",
+  },
+  {
+    id: "3",
+    icon: "clock",
+    title: "فواتير سابقة",
+    i18n: "فواتير سابقة",
+    to: "/old-factures/",
   },
 ];

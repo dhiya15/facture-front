@@ -32,6 +32,11 @@ const router = new Router({
           path: "/factures",
           component: () => import("@/views/factures/NewFacture"),
         },
+        {
+          name: "فواتير سابقة",
+          path: "/old-factures",
+          component: () => import("@/views/old-factures/OldFactures"),
+        },
       ],
       beforeEnter: async (to, from, next) => {
         const  token  = localStorage.getItem('_utoken');

@@ -107,6 +107,9 @@
               <b-button @click="addItem()" variant="primary">اضافة</b-button>
             </div>
           </b-col>
+          <b-col>
+            <h2 class="mb-0 mt-4">{{getTotalPrice().toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ')}} دج</h2>
+          </b-col>
         </b-row>
         <b-table
             responsive
@@ -130,7 +133,7 @@
             <div>
               <div>
                 <h6 class="fw-medium mb-0">
-                  {{ data.item.price }}
+                  {{ data.item.price.toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') }}
                 </h6>
               </div>
             </div>
@@ -144,7 +147,15 @@
               </div>
             </div>
           </template>
-
+          <template #cell(total)="data">
+            <div>
+              <div>
+                <h6 class="fw-medium mb-0">
+                  {{ (data.item.qte * data.item.price).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') }}
+                </h6>
+              </div>
+            </div>
+          </template>
           <template #cell(show_details)="data">
             <div>
               <b-button
@@ -168,19 +179,38 @@
 
       <tab-content title="اعدادات" icon="mdi mdi-settings" :before-change="checkSettings">
 
-        <b-form-group
-            id="input-group-2"
-            label="رقم الفاتورة:"
-            label-for="input-2"
-            class="text-right"
-        >
-          <b-form-input
-              id="input-2"
-              v-model="form2.number"
-              placeholder="ادخل رقم الفاتورة"
-              required
-          ></b-form-input>
-        </b-form-group>
+        <b-row>
+          <b-col>
+            <b-form-group
+                id="input-group-2"
+                label="رقم الفاتورة:"
+                label-for="input-2"
+                class="text-right"
+            >
+              <b-form-input
+                  id="input-2"
+                  v-model="form2.number"
+                  placeholder="ادخل رقم الفاتورة"
+                  required
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group
+                id="input-group-2"
+                label="رقم الطلبية:"
+                label-for="input-2"
+                class="text-right"
+            >
+              <b-form-input
+                  id="input-2"
+                  v-model="form2.order_no"
+                  placeholder="ادخل رقم الطلبية"
+                  required
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
 
         <b-form-group
             id="input-group-2"
@@ -234,19 +264,6 @@ export default {
   name: "FormWizardTab",
   data: () => ({
     title: "FormWizardTab",
-    project1: "",
-    project2: "",
-    project3: "",
-    project4: "",
-    project5: "",
-    projectselect6: 0,
-    projectselect7: 0,
-    project8: "",
-    event6: "",
-    items4: ["Choose Your option", "Less than $5000", "$5000 to $10000"],
-    selected3: "",
-
-
     items: [],
     items2: [],
     items3: [],
@@ -260,12 +277,13 @@ export default {
     currentPerson: -1,
     form: {
       name: "",
-      unit: "",
+      unit: "-",
       price: 0,
       qte: 0
     },
     form2: {
       number: "",
+      order_no: "",
       lang: "",
       withPrice: ""
     },
@@ -287,6 +305,10 @@ export default {
         label: "الوحدة",
       },
       {
+        key: "total",
+        label: "المجموع",
+      },
+      {
         key: "show_details",
         label: "",
       },
@@ -301,6 +323,13 @@ export default {
     ],
   }),
   methods: {
+    getTotalPrice() {
+      var total = 0
+      for(var i=0; i<this.items3.length; i++) {
+        total = total + (this.items3[i].qte * this.items3[i].price)
+      }
+      return parseFloat(total)
+    },
     onComplete: function () {
       this.printReport()
     },
@@ -357,7 +386,7 @@ export default {
         this.items3.push(this.form)
         this.form = {
           name: "",
-          unit: "",
+          unit: "-",
           price: 0,
           qte: 0
         }
@@ -371,13 +400,22 @@ export default {
     },
     printReport() {
       this.isLoading = true
+
+      var strProducts = "";
+      for(var i=0; i<this.items3.length; i++) {
+        strProducts = strProducts + this.items3[i].name + "#" + this.items3[i].unit + "#" + this.items3[i].price + "#" + this.items3[i].qte + "$";
+      }
+      strProducts = strProducts.substring(0, strProducts.length - 1)
+
       this.$http.post('/print-invoice', {
         info: this.currentInfo,
         client: this.currentPerson,
         items: this.items3,
         lang: this.form2.lang,
         number: this.form2.number,
-        withPrice: this.form2.withPrice
+        order_no: this.form2.order_no,
+        withPrice: this.form2.withPrice,
+        strProducts: strProducts
       }, {
         responseType: 'blob',
       }).then((response) => {
@@ -385,6 +423,8 @@ export default {
         var fileURL = window.URL.createObjectURL(new Blob([response.data], {type: 'application/pdf'}));
         var W = window.open(fileURL)
         W.window.print();
+
+        this.$router.push({ path: '/old-factures' })
       });
     },
   },

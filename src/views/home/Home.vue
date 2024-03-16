@@ -29,7 +29,7 @@
               <b-row>
                 <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
-                    <img src="@/assets/images/users/people.png" class="img-fluid rounded-circle" width="65"/>
+                    <img src="@/assets/images/users/statistics.png" class="img-fluid" width="65"/>
                     <h5 class="card-title mt-2 mb-1 pb-1">معلومات المؤسسة</h5>
 
                     <b-button block href="/factures/information" pill variant="danger" class="mt-1 d-flex align-items-center justify-content-center">
@@ -39,7 +39,7 @@
                 </b-col>
                 <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
-                    <img src="@/assets/images/users/money-management.png" class="img-fluid rounded-circle" width="65" />
+                    <img src="@/assets/images/users/people.png" class="img-fluid" width="65" />
                     <h5 class="card-title mt-2 mb-1 pb-1">تسيير الزبائن</h5>
 
                     <b-button block href="/factures/clients" pill variant="primary" class="mt-1 d-flex align-items-center justify-content-center">
@@ -49,10 +49,10 @@
                 </b-col>
                 <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
-                    <img src="@/assets/images/users/collateral.png" class="img-fluid rounded-circle" width="65" />
+                    <img src="@/assets/images/users/collateral.png" class="img-fluid" width="65" />
                     <h5 class="card-title mt-2 mb-1 pb-1">إنشاء فاتورة جديدة</h5>
 
-                    <b-button block href="/jam3iya/expenses_dar_jma3a" pill variant="warning" class="mt-1 d-flex align-items-center justify-content-center text-white">
+                    <b-button block href="/factures/factures" pill variant="warning" class="mt-1 d-flex align-items-center justify-content-center text-white">
                       اضهار
                     </b-button>
                   </b-card>
@@ -60,14 +60,14 @@
                 <b-col cols="12" md="4" lg="3">
                   <b-card class="mb-1 text-center">
                     <img
-                        src="@/assets/images/users/payment.png"
-                        class="img-fluid rounded-circle"
+                        src="@/assets/images/users/content.png"
+                        class="img-fluid"
                         width="65"/>
                     <h5 class="card-title mt-2 mb-1 pb-1">حول البرنامج</h5>
 
                     <b-button
                         block
-                        href="/jam3iya/member_subscriptions"
+                        href=""
                         pill
                         variant="success"
                         class="mt-1 d-flex align-items-center justify-content-center">

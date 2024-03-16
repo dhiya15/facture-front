@@ -104,6 +104,18 @@
             تعديل / حذف
           </b-button>
 
+          <b-button
+              v-b-popover.hover.right="data.item.full_name_ar"
+              title="Nom complète"
+              size="sm"
+              variant="primary"
+              @click="hideAlerts(); show = true; getItem(data.item)"
+              class="mr-2"
+              v-b-modal.modal-center
+          >
+            نسخ
+          </b-button>
+
         </div>
       </template>
 
@@ -433,9 +445,6 @@
                   </b-col>
                 </b-row>
 
-                <b-row>
-
-                </b-row>
 
 
 
@@ -455,6 +464,7 @@
         id="modal-center2"
         hide-footer
         centered
+        size="xl"
         title="تعديل معلومات"
         class="text-right"
     >
@@ -497,7 +507,7 @@
                   <b-col>
                     <b-form-group
                         id="input-group-1"
-                        label="النمط:"
+                        label="النمط بالفرنسية:"
                         label-for="input-1"
                         class="text-right"
                     >
@@ -505,40 +515,7 @@
                           id="input-1"
                           v-model="form.key"
                           type="text"
-                          placeholder="ادخل النمط"
-                      ></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                  <b-col>
-                    <b-form-group
-                        id="input-group-1"
-                        label="النمط بالعربية:"
-                        label-for="input-1"
-                        class="text-right"
-                    >
-                      <b-form-input
-                          id="input-1"
-                          v-model="form.key_ar"
-                          type="text"
-                          placeholder="ادخل النمط بالعربية"
-                      ></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                </b-row>
-
-                <b-row>
-                  <b-col>
-                    <b-form-group
-                        id="input-group-2"
-                        label="الاسم بالعربية:"
-                        label-for="input-2"
-                        class="text-right"
-                    >
-                      <b-form-input
-                          id="input-2"
-                          v-model="form.full_name_ar"
-                          placeholder="ادخل الاسم بالعربية"
-                          required
+                          placeholder="ادخل النمط بالفرنسية"
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
@@ -557,24 +534,6 @@
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
-                </b-row>
-
-                <b-row>
-                  <b-col>
-                    <b-form-group
-                        id="input-group-2"
-                        label="العنوان بالعربية:"
-                        label-for="input-2"
-                        class="text-right"
-                    >
-                      <b-form-input
-                          id="input-2"
-                          v-model="form.address_ar"
-                          placeholder="ادخل العنوان بالعربية"
-                          required
-                      ></b-form-input>
-                    </b-form-group>
-                  </b-col>
                   <b-col>
                     <b-form-group
                         id="input-group-2"
@@ -586,6 +545,54 @@
                           id="input-2"
                           v-model="form.address_fr"
                           placeholder="ادخل العنوان بالفرنسية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                </b-row>
+
+                <b-row>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-1"
+                        label="النمط بالعربية:"
+                        label-for="input-1"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-1"
+                          v-model="form.key_ar"
+                          type="text"
+                          placeholder="ادخل النمط بالعربية"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="الاسم بالعربية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.full_name_ar"
+                          placeholder="ادخل الاسم بالعربية"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="العنوان بالعربية:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.address_ar"
+                          placeholder="ادخل العنوان بالعربية"
                           required
                       ></b-form-input>
                     </b-form-group>
@@ -619,6 +626,21 @@
                           id="input-2"
                           v-model="form.phone"
                           placeholder="ادخل رقم الهاتف"
+                          required
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
+                  <b-col>
+                    <b-form-group
+                        id="input-group-2"
+                        label="رقم الحساب البنكي:"
+                        label-for="input-2"
+                        class="text-right"
+                    >
+                      <b-form-input
+                          id="input-2"
+                          v-model="form.account_number"
+                          placeholder="ادخل رقم الحساب البنكي"
                           required
                       ></b-form-input>
                     </b-form-group>
@@ -657,9 +679,6 @@
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
-                </b-row>
-
-                <b-row>
                   <b-col>
                     <b-form-group
                         id="input-group-1"
@@ -673,21 +692,6 @@
                           type="text"
                           required
                           placeholder="ادخل رقم التعريف الاحصائي"
-                      ></b-form-input>
-                    </b-form-group>
-                  </b-col>
-                  <b-col>
-                    <b-form-group
-                        id="input-group-2"
-                        label="رقم الحساب البنكي:"
-                        label-for="input-2"
-                        class="text-right"
-                    >
-                      <b-form-input
-                          id="input-2"
-                          v-model="form.account_number"
-                          placeholder="ادخل رقم الحساب البنكي"
-                          required
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
@@ -725,22 +729,19 @@
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
-                </b-row>
-
-                <b-row>
                   <b-col>
                     <b-form-group
                         id="input-group-1"
-                        label="المجال:"
+                        label="المجال بالعربية:"
                         label-for="input-1"
                         class="text-right"
                     >
                       <b-form-input
                           id="input-1"
-                          required
                           v-model="form.header_ar"
                           type="text"
-                          placeholder="ادخل االمجال"
+                          required
+                          placeholder="ادخل االمجال بالعربية"
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
@@ -847,7 +848,7 @@ export default {
     isLoading: false,
   }),
   mounted() {
-    this.totalRows = this.items.length;
+
     this.getAllInformation()
   },
   methods: {
@@ -892,6 +893,7 @@ export default {
             }else{
               this.items = []
             }
+            this.totalRows = this.items.length;
             console.log(response.data.data)
           })
           .catch(error => {

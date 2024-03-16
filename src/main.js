@@ -20,8 +20,9 @@ import hljs from "highlight.js";
 import axios from "axios";
 
 
-axios.defaults.baseURL = 'http://localhost:8000/api/';
-//axios.defaults.baseURL = 'https://mega-tech.dev/jam3iya/back-end/api/';
+//axios.defaults.baseURL = 'http://localhost:8000/api/';
+axios.defaults.baseURL = 'http://localhost/factures/dashboard/api/';
+//axios.defaults.baseURL = 'https://mega-tech.dev/factures/dashboard/api/';
 axios.defaults.headers.common = {
     "Content-Type": "application/json",
     Accept: "application/json",

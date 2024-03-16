@@ -495,7 +495,7 @@ export default {
     isLoading: false,
   }),
   mounted() {
-    this.totalRows = this.items.length;
+
     this.getAllPersons()
   },
   methods: {
@@ -540,6 +540,7 @@ export default {
             }else{
               this.items = []
             }
+            this.totalRows = this.items.length;
             console.log(response.data.data)
           })
           .catch(error => {
