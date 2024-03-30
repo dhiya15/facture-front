@@ -2,6 +2,7 @@
 // Theme Google Fonts
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800&family=Dancing+Script&display=swap');
+//@import url('~@/assets/fonts/cairo.ttf');
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
 // Bootstrap Override Colors
@@ -97,43 +98,43 @@ $grid-breakpoints: (
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
 // Typography Settings
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
-$font-size-base: 0.875rem;
-$font-family-sans-serif: 'Cairo', sans-serif;
-$font-family: 'Cairo', sans-serif;
+$font-size-base: 1.2rem;
+$font-family-sans-serif: Cairo, sans-serif;
+$font-family: Cairo, sans-serif;
 
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-medium: 700 !default;
 $font-weight-bold: 800 !default;
 
-$h1-font-size: 36px !default;
-$h2-font-size: 30px !default;
-$h3-font-size: 24px !default;
-$h4-font-size: 18px !default;
-$h5-font-size: 16px !default;
-$h6-font-size: 14px !default;
+$h1-font-size: 41px !default;
+$h2-font-size: 35px !default;
+$h3-font-size: 29px !default;
+$h4-font-size: 23px !default;
+$h5-font-size: 21px !default;
+$h6-font-size: 19px !default;
 
 // Font size
 $font-sizes: (
-  1: 10px,
-  2: 12px,
-  3: 14px,
-  4: 16px,
-  5: 18px,
-  6: 20px,
-  7: 24px,
+  1: 15px,
+  2: 17px,
+  3: 19px,
+  4: 21px,
+  5: 23px,
+  6: 25px,
+  7: 29px,
 );
 
 // display
 $display-font-sizes: (
-  1: 5rem,
-  2: 4.5rem,
-  3: 4rem,
-  4: 3.5rem,
-  5: 3rem,
-  6: 2.5rem,
-  7: 2rem,
-  8: 1.75rem,
+  1: 7rem,
+  2: 6.5rem,
+  3: 6rem,
+  4: 5.5rem,
+  5: 5rem,
+  6: 4.5rem,
+  7: 4rem,
+  8: 3.75rem,
 ) !default;
 
 $headings-margin-bottom: (1rem / 2) !default;

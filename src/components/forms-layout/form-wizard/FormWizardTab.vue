@@ -44,21 +44,32 @@
       <tab-content title="المنتجات" icon="mdi mdi-package-variant-closed" :before-change="checkProducts">
         <b-row>
           <b-col>
+            <h2 class="mb-0 mt-4" style="direction: rtl">{{getTotalPrice().toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00"}} دج</h2>
+          </b-col>
+        </b-row>
+        <br>
+        <b-row>
+          <b-col cols="6">
             <b-form-group
+                v-if="oldProducts.length > 0"
                 id="input-group-2"
                 label="اسم المنتج:"
                 label-for="input-2"
                 class="text-right"
             >
               <b-form-input
+                  list="my-list-id"
                   id="input-2"
                   v-model="form.name"
                   placeholder="ادخل اسم المنتج"
                   required
               ></b-form-input>
+              <datalist id="my-list-id">
+                <option v-for="product in Array.from(oldProducts)" :key="product">{{product}}</option>
+              </datalist>
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="2">
             <b-form-group
                 id="input-group-2"
                 label="ثمن المتج:"
@@ -73,7 +84,7 @@
               ></b-form-input>
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="1">
             <b-form-group
                 id="input-group-2"
                 label="الكمية:"
@@ -88,7 +99,7 @@
               ></b-form-input>
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="1">
             <b-form-group
                 id="input-group-2"
                 label="الوحدة:"
@@ -103,12 +114,9 @@
             </b-form-group>
           </b-col>
           <b-col>
-            <div class="btn-grp" style="margin-top: 30px">
+            <div class="btn-grp" style="margin-top: 35px">
               <b-button @click="addItem()" variant="primary">اضافة</b-button>
             </div>
-          </b-col>
-          <b-col>
-            <h2 class="mb-0 mt-4">{{getTotalPrice().toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ')}} دج</h2>
           </b-col>
         </b-row>
         <b-table
@@ -132,8 +140,8 @@
           <template #cell(price)="data">
             <div>
               <div>
-                <h6 class="fw-medium mb-0">
-                  {{ data.item.price.toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') }}
+                <h6 class="fw-medium mb-0" style="direction: rtl">
+                  {{ data.item.price.toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00" }}
                 </h6>
               </div>
             </div>
@@ -150,8 +158,8 @@
           <template #cell(total)="data">
             <div>
               <div>
-                <h6 class="fw-medium mb-0">
-                  {{ (data.item.qte * data.item.price).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') }}
+                <h6 class="fw-medium mb-0" style="direction: rtl">
+                  {{ (data.item.qte * data.item.price).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00" }}
                 </h6>
               </div>
             </div>
@@ -163,12 +171,26 @@
                   title="Nom complète"
                   size="sm"
                   variant="primary"
+                  @click="updateItem(data.item)"
+                  class="mr-2"
+                  v-b-modal.modal-center
+              >
+                تعديل
+              </b-button>
+
+              <b-button
+                  v-b-popover.hover.right="data.item.name"
+                  title="Nom complète"
+                  size="sm"
+                  variant="danger"
                   @click="deleteItem(data.item)"
                   class="mr-2"
                   v-b-modal.modal-center2
               >
                 حذف
               </b-button>
+
+
 
             </div>
           </template>
@@ -253,6 +275,91 @@
       </b-button>
     </form-wizard>
   </div>
+
+    <b-modal
+        id="modal-center"
+        hide-footer
+        centered
+        title="تعديل منتج"
+        class="text-right"
+    >
+      <b-row>
+        <b-col>
+          <b-form-group
+              v-if="oldProducts.length > 0"
+              id="input-group-2"
+              label="اسم المنتج:"
+              label-for="input-2"
+              class="text-right"
+          >
+            <b-form-input
+                list="my-list-id"
+                id="input-2"
+                v-model="tempProduct.name"
+                placeholder="ادخل اسم المنتج"
+                required
+            ></b-form-input>
+            <datalist id="my-list-id">
+              <option v-for="product in Array.from(oldProducts)" :key="product">{{product}}</option>
+            </datalist>
+          </b-form-group>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-form-group
+              id="input-group-2"
+              label="ثمن المتج:"
+              label-for="input-2"
+              class="text-right"
+          >
+            <b-form-input
+                id="input-2"
+                v-model="tempProduct.price"
+                placeholder="ادخل ثمن المنتج"
+                required
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-form-group
+              id="input-group-2"
+              label="الكمية:"
+              label-for="input-2"
+              class="text-right"
+          >
+            <b-form-input
+                id="input-2"
+                v-model="tempProduct.qte"
+                placeholder="ادخل كمية المنتج"
+                required
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col>
+          <b-form-group
+              id="input-group-2"
+              label="الوحدة:"
+              label-for="input-2"
+              class="text-right"
+          >
+            <b-form-input
+                id="input-2"
+                v-model="tempProduct.unit"
+                placeholder="ادخل الوحدة"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+      </b-row>
+      <b-col>
+        <div class="btn-grp" style="margin-top: 35px">
+          <b-button @click="confirmUpdateItem(); $bvModal.hide('modal-center')" variant="primary">تعديل</b-button>
+        </div>
+      </b-col>
+    </b-modal>
+
   </b-overlay>
 </template>
 
@@ -287,6 +394,8 @@ export default {
       lang: "",
       withPrice: ""
     },
+    tempProduct: {},
+    tempIndex: {},
     fields: [
       {
         key: "name",
@@ -321,6 +430,7 @@ export default {
       { value: "ar", text: "عربية" },
       { value: "fr", text: "فرنسية" },
     ],
+    oldProducts: []
   }),
   methods: {
     getTotalPrice() {
@@ -398,6 +508,17 @@ export default {
         this.items3.splice(idx, 1);
       }
     },
+    updateItem(item) {
+      var idx = this.items3.indexOf(item);
+      if (idx !== -1) {
+        this.tempProduct = this.items3[idx]
+        this.tempIndex = idx
+      }
+    },
+    confirmUpdateItem() {
+      this.items3[this.tempIndex] = this.tempProduct
+
+    },
     printReport() {
       this.isLoading = true
 
@@ -427,10 +548,26 @@ export default {
         this.$router.push({ path: '/old-factures' })
       });
     },
+    getAllInvoices() {
+      this.isLoading = true
+      this.$http.get("invoices/get-all-products")
+          .then(response => {
+            this.isLoading = false
+            if(response.status === 200){
+              this.oldProducts = Array.from(response.data.data)
+              console.log(this.oldProducts)
+            }
+          })
+          .catch(error => {
+            this.isLoading = false
+            console.log(error)
+          });
+    },
   },
   mounted() {
     this.getAllInformation()
     this.getAllPersons()
+    this.getAllInvoices()
   },
   components: {
     FormWizard,
