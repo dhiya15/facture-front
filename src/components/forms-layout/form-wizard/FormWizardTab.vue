@@ -251,29 +251,86 @@
           </b-col>
         </b-row>
 
-        <b-form-group
-            id="input-group-2"
-            label="اللغة:"
-            label-for="input-2"
-            class="text-right"
-        >
-          <b-form-select
-              v-model="form2.lang"
-              :options="options2"
-          ></b-form-select>
-        </b-form-group>
+        <b-row>
+<!--          <b-col>-->
+<!--            <b-form-group-->
+<!--                id="input-group-2"-->
+<!--                label="حجم العنوان:"-->
+<!--                label-for="input-2"-->
+<!--                class="text-right"-->
+<!--            >-->
+<!--              <b-form-input-->
+<!--                  id="input-2"-->
+<!--                  v-model="form2.title_font"-->
+<!--                  placeholder="حجم العنوان"-->
+<!--                  required-->
+<!--                  class="text-right"-->
+<!--              ></b-form-input>-->
+<!--            </b-form-group>-->
+<!--          </b-col>-->
+<!--          <b-col>-->
+<!--            <b-form-group-->
+<!--                id="input-group-2"-->
+<!--                label="حجم المعلومات:"-->
+<!--                label-for="input-2"-->
+<!--                class="text-right"-->
+<!--            >-->
+<!--              <b-form-input-->
+<!--                  id="input-2"-->
+<!--                  v-model="form2.infos_font"-->
+<!--                  placeholder="حجم المعلومات"-->
+<!--                  required-->
+<!--                  class="text-right"-->
+<!--              ></b-form-input>-->
+<!--            </b-form-group>-->
+<!--          </b-col>-->
 
-        <b-form-group
-            id="input-group-2"
-            label="اظهار الثمن:"
-            label-for="input-2"
-            class="text-right"
-        >
-          <b-form-select
-              v-model="form2.withPrice"
-              :options="options"
-          ></b-form-select>
-        </b-form-group>
+        </b-row>
+
+        <b-row>
+          <b-col>
+            <b-form-group
+                id="input-group-2"
+                label="اللغة:"
+                label-for="input-2"
+                class="text-right"
+            >
+              <b-form-select
+                  v-model="form2.lang"
+                  :options="options2"
+              ></b-form-select>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group
+                id="input-group-2"
+                label="اظهار الثمن:"
+                label-for="input-2"
+                class="text-right"
+            >
+              <b-form-select
+                  v-model="form2.withPrice"
+                  :options="options"
+              ></b-form-select>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group
+                id="input-group-2"
+                label="حجم الجدول:"
+                label-for="input-2"
+                class="text-right"
+            >
+              <b-form-input
+                  id="input-2"
+                  v-model="form2.table_font"
+                  placeholder="حجم الجدول"
+                  required
+                  class="text-right"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-row>
 
 
 
@@ -412,6 +469,9 @@ export default {
       lang: "",
       withPrice: "",
       date: "",
+      title_font: 24,
+      infos_font: 12,
+      table_font: 10,
     },
     tempProduct: {},
     tempIndex: {},
@@ -556,6 +616,9 @@ export default {
         order_no: this.form2.order_no,
         withPrice: this.form2.withPrice,
         date_cr: this.form2.date,
+        title_font: this.form2.title_font,
+        infos_font: this.form2.infos_font,
+        table_font: this.form2.table_font,
         strProducts: strProducts
       }, {
         responseType: 'blob',

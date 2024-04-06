@@ -212,9 +212,62 @@
               </b-form-group>
             </b-col>
             <b-col>
+              <b-form-group
+                  id="input-group-2"
+                  label="حجم الجدول:"
+                  label-for="input-2"
+                  class="text-right"
+              >
+                <b-form-input
+                    id="input-2"
+                    v-model="row.item.table_font"
+                    placeholder="حجم الجدول"
+                    required
+                    class="text-right"
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
               <h2 class="mb-0 mt-4" style="direction: ltr">{{getTotalPrice(row).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00"}} دج</h2>
             </b-col>
           </b-row>
+
+          <b-row>
+<!--            <b-col>-->
+<!--              <b-form-group-->
+<!--                  id="input-group-2"-->
+<!--                  label="حجم العنوان:"-->
+<!--                  label-for="input-2"-->
+<!--                  class="text-right"-->
+<!--              >-->
+<!--                <b-form-input-->
+<!--                    id="input-2"-->
+<!--                    v-model="row.item.title_font"-->
+<!--                    placeholder="حجم العنوان"-->
+<!--                    required-->
+<!--                    class="text-right"-->
+<!--                ></b-form-input>-->
+<!--              </b-form-group>-->
+<!--            </b-col>-->
+<!--            <b-col>-->
+<!--              <b-form-group-->
+<!--                  id="input-group-2"-->
+<!--                  label="حجم المعلومات:"-->
+<!--                  label-for="input-2"-->
+<!--                  class="text-right"-->
+<!--              >-->
+<!--                <b-form-input-->
+<!--                    id="input-2"-->
+<!--                    v-model="row.item.infos_font"-->
+<!--                    placeholder="حجم المعلومات"-->
+<!--                    required-->
+<!--                    class="text-right"-->
+<!--                ></b-form-input>-->
+<!--              </b-form-group>-->
+<!--            </b-col>-->
+
+          </b-row>
+
           <br>
 
           <b-row>
@@ -688,6 +741,10 @@ export default {
                     id: 0
                   }
                 }
+                this.items[i].created_at = this.items[i].created_at.substr(0, 10)
+                this.items[i].title_font = 24
+                this.items[i].infos_font = 12
+                this.items[i].table_font = 10
               }
             }else{
               this.items = []
@@ -719,6 +776,9 @@ export default {
         lang: row.item.lang,
         withPrice: row.item.with_price,
         date_cr: row.item.created_at,
+        title_font: row.item.title_font,
+        table_font: row.item.table_font,
+        infos_size: row.item.infos_size,
         products: strProducts,
         without_save: true
       }, {
