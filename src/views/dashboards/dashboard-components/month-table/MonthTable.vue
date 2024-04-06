@@ -378,7 +378,6 @@
                           id="input-2"
                           v-model="form.address_ar"
                           placeholder="ادخل العنوان بالعربية"
-                          required
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
@@ -393,7 +392,6 @@
                           id="input-2"
                           v-model="form.address_fr"
                           placeholder="ادخل العنوان بالفرنسية"
-                          required
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
@@ -413,7 +411,6 @@
                       id="input-2"
                       v-model="form.phone"
                       placeholder="ادخل رقم الهاتف"
-                      required
                   ></b-form-input>
                 </b-form-group>
 
@@ -471,7 +468,7 @@ export default {
     items: [],
     totalRows: 1,
     currentPage: 1,
-    perPage: 5,
+    perPage: 10,
     pageOptions: [5, 10, 15, { value: 100, text: "استضهر اكثر" }],
     form: {
       email: "",

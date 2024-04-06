@@ -195,7 +195,24 @@
 
           <b-row>
             <b-col>
-              <h2 class="mb-0 mt-4" style="direction: rtl">{{getTotalPrice(row).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00"}} دج</h2>
+              <b-form-group
+                  id="input-group-2"
+                  label="التاريخ:"
+                  label-for="input-2"
+                  class="text-right"
+              >
+                <b-form-input
+                    id="input-2"
+                    v-model="row.item.created_at"
+                    placeholder="ادخل التاريخ"
+                    required
+                    class="text-right"
+                    type="date"
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <h2 class="mb-0 mt-4" style="direction: ltr">{{getTotalPrice(row).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00"}} دج</h2>
             </b-col>
           </b-row>
           <br>
@@ -291,7 +308,7 @@
             <template #cell(name)="data">
               <div>
                 <div>
-                  <h6 class="fw-medium mb-0">
+                  <h6 class="fw-medium mb-0" style="white-space: pre-wrap;">
                     {{ data.item.name }}
                   </h6>
                 </div>
@@ -300,7 +317,7 @@
             <template #cell(price)="data">
               <div>
                 <div>
-                  <h6 class="fw-medium mb-0" style="direction: rtl">
+                  <h6 class="fw-medium mb-0" style="direction: ltr">
                     {{ data.item.price.toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00" }}
                   </h6>
                 </div>
@@ -318,7 +335,7 @@
             <template #cell(total)="data">
               <div>
                 <div>
-                  <h6 class="fw-medium mb-0" style="direction: rtl">
+                  <h6 class="fw-medium mb-0" style="direction: ltr">
                     {{ (data.item.qte * data.item.price).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00" }}
                   </h6>
                 </div>
@@ -544,13 +561,13 @@ export default {
     items3: [],
     totalRows: 1,
     currentPage: 1,
-    perPage: 5,
+    perPage: 10,
     pageOptions: [5, 10, 15, { value: 100, text: "استضهر اكثر" }],
     form: {
       name: "",
       unit: "-",
       price: 0,
-      qte: 0
+      qte: 1
     },
     show: true,
     show2: true,
@@ -701,6 +718,7 @@ export default {
         order_no: row.item.order_no,
         lang: row.item.lang,
         withPrice: row.item.with_price,
+        date_cr: row.item.created_at,
         products: strProducts,
         without_save: true
       }, {
@@ -734,6 +752,7 @@ export default {
         order_no: row.item.order_no,
         lang: row.item.lang,
         with_price: row.item.with_price,
+        created_at: row.item.created_at,
         products: strProducts
       }, {
         headers: {

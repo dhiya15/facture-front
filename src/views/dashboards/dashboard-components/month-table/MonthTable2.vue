@@ -817,7 +817,7 @@ export default {
     items: [],
     totalRows: 1,
     currentPage: 1,
-    perPage: 5,
+    perPage: 10,
     pageOptions: [5, 10, 15, { value: 100, text: "استضهر اكثر" }],
     form: {
       key: "",

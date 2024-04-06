@@ -44,7 +44,7 @@
       <tab-content title="المنتجات" icon="mdi mdi-package-variant-closed" :before-change="checkProducts">
         <b-row>
           <b-col>
-            <h2 class="mb-0 mt-4" style="direction: rtl">{{getTotalPrice().toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00"}} دج</h2>
+            <h2 class="mb-0 mt-4" style="direction: ltr">{{getTotalPrice().toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00"}} دج</h2>
           </b-col>
         </b-row>
         <br>
@@ -131,7 +131,7 @@
           <template #cell(name)="data">
             <div>
               <div>
-                <h6 class="fw-medium mb-0">
+                <h6 class="fw-medium mb-0" style="white-space: pre-wrap;">
                   {{ data.item.name }}
                 </h6>
               </div>
@@ -140,7 +140,7 @@
           <template #cell(price)="data">
             <div>
               <div>
-                <h6 class="fw-medium mb-0" style="direction: rtl">
+                <h6 class="fw-medium mb-0" style="direction: ltr">
                   {{ data.item.price.toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00" }}
                 </h6>
               </div>
@@ -158,7 +158,7 @@
           <template #cell(total)="data">
             <div>
               <div>
-                <h6 class="fw-medium mb-0" style="direction: rtl">
+                <h6 class="fw-medium mb-0" style="direction: ltr">
                   {{ (data.item.qte * data.item.price).toLocaleString('dz', { useGrouping: true }).replace(/,/g, '  ') + ",00" }}
                 </h6>
               </div>
@@ -229,6 +229,23 @@
                   v-model="form2.order_no"
                   placeholder="ادخل رقم الطلبية"
                   required
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group
+                id="input-group-2"
+                label="التاريخ:"
+                label-for="input-2"
+                class="text-right"
+            >
+              <b-form-input
+                  id="input-2"
+                  v-model="form2.date"
+                  placeholder="ادخل التاريخ"
+                  required
+                  class="text-right"
+                  type="date"
               ></b-form-input>
             </b-form-group>
           </b-col>
@@ -386,13 +403,15 @@ export default {
       name: "",
       unit: "-",
       price: 0,
-      qte: 0
+      qte: 1,
+
     },
     form2: {
       number: "",
       order_no: "",
       lang: "",
-      withPrice: ""
+      withPrice: "",
+      date: "",
     },
     tempProduct: {},
     tempIndex: {},
@@ -536,6 +555,7 @@ export default {
         number: this.form2.number,
         order_no: this.form2.order_no,
         withPrice: this.form2.withPrice,
+        date_cr: this.form2.date,
         strProducts: strProducts
       }, {
         responseType: 'blob',
